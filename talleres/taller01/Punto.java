@@ -1,7 +1,7 @@
 /**
  * La clase Punto tiene la intención de representar coordenadas en el espacio y calcular su distancia.
  * 
- * @author Mauricio Toro, Andres Paez, Daniel Mesa 
+ * @author Mauricio Toro, Andres Paez, Daniel Mesa, David Gomez, Simon Correa 
  * @version 2
  */
 //Nota: Hacen falta algunas partes de las lineas de codigo, estas estan indicadas con una linea, ¡debes completarlas!
@@ -13,8 +13,8 @@ public class Punto {
      * Se inicializan las variables globales en el constructor de manera que no posean valores nulos o 0s.
      */
     public Punto(double x, double y) {
-      this.x = x;
-      this.y = y;			
+        this.x = x;
+        this.y = y;			
     }
 
     /**
@@ -23,7 +23,7 @@ public class Punto {
      * @return eje coordenado x
      */
     public double x() {
-			return this.x;
+        return this.x;
     }
 
     /**
@@ -32,7 +32,7 @@ public class Punto {
      * @return eje coordenado y
      */
     public double y() {
-			return this.y;
+        return this.y;
     }
 
     /**
@@ -43,12 +43,11 @@ public class Punto {
      *
      * @see <a href="http://mathworld.wolfram.com/PolarCoordinates.html"> Ver más <a/>
      */
-    
-    public double radioPolar() {
-      double radio = Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
-		  return radio;
-    }
 
+    public double radioPolar() {
+        double radio = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+        return radio;
+    }
 
     /**
      * Método para obtener el ángulo polar, en este caso se puede obtener por medio de la tangente inversa.
@@ -59,8 +58,7 @@ public class Punto {
      * @see <a href="http://mathworld.wolfram.com/PolarCoordinates.html"> Ver más <a/>
      */
     public double anguloPolar() {
-      
-      double angulo = 0;
+        double angulo = 0;
 
         if ((x > 0) && (y > 0)) { //1er cuadrante
             angulo = Math.atan(y/x);
@@ -68,7 +66,7 @@ public class Punto {
         } else if (((x < 0)&&(y > 0)) || (x < 0)&&(y < 0)){ //2ndo y 3er cuadrante
             angulo = Math.atan(y/x)+Math.PI;
 
-        } else if((this.x > 0)&&(this.y< 0)){ //4rto cuadrante  
+        } else if((this.x > 0)&&(this.y< 0)){ //4rto cuadrante
             angulo = Math.atan(y/x) + (2*Math.PI);
         }
         return angulo;
@@ -89,12 +87,12 @@ public class Punto {
      * comparar el Punto desde el cual fue llamado.
      * @see <a href="http://mathworld.wolfram.com/Distance.html"> Ver más <a/>
      */
-  
+
     public double distanciaEuclidiana(Punto otro) {
-      
-      double dx = this.x - otro.x;
-      double dy = this.y - otro.y;
-      double dist =  Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
-      return dist;
+        
+        double dx = this.x - otro.x;
+        double dy = this.y - otro.y;
+        double dist =  Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+        return dist;
     }
 }
