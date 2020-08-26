@@ -52,13 +52,13 @@ public class Taller5 {
         for(cont1=1; cont1 <array.length; cont1++) {       //c_1 c_2    T(n) = c_1 + c_2*n
             aux = array[cont1];                            //c_3*n
 
-            for(cont2 = cont1-1;cont2>=0 && array[cont2] > aux; cont2--) {  //c_4 c_5       T(n) = c_4 + c_5*n
-                array[cont2+1] = array[cont2];
-                array[cont2] = aux;
+            for(cont2 = cont1-1;cont2>=0 && array[cont2] > aux; cont2--) {  //c_4 = 2 c_5= 5    T(n) = (c_4 + c_5*(n-1))*n
+                array[cont2+1] = array[cont2];                                          
+                array[cont2] = aux;                                             //c_6 = 6?    T(n) = c_6(n-1)n
 
             }
         }
-        return array;
+        return array;                   //c_7       T(n)= = c_1 + c_2*n + c_3*n + (c_4 + c_5*(n-1))*n + c_6(n-1)(n) + c_7
     } 
 
     public static void main(String[] args){
@@ -75,18 +75,23 @@ public class Taller5 {
 
         // }
         
-        for (int n = 10000000; n < 12000000; n = n + 100000){ 
+        // for (int n = 10000000; n < 12000000; n = n + 100000){ 
 
-            long ti = System.currentTimeMillis();
+            // long ti = System.currentTimeMillis();
 
-            //insertionSort(new int[n]);
-            suma(new int[n]);
+            // //insertionSort(new int[n]);
+            // suma(new int[n]);
 
-            long tf = System.currentTimeMillis();
+            // long tf = System.currentTimeMillis();
 
-            System.out.println(tf-ti);      
+            // System.out.println(tf-ti);      
 
-        }
+        // }
+        int[] array = {1,3,6,2,7,4,9,6,12,10};
+        insertionSort(array);
+        for(int e: array)
+            System.out.println(e);
+        
     }
 
 }
