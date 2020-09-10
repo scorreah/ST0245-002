@@ -7,12 +7,12 @@
  */
 
 import java.lang.IndexOutOfBoundsException;
-public class LinkedList <T>
+public class LinkedListMauricio <T>
 {
     private Node<T> first;
     private int size; 
 
-    public LinkedList()
+    public LinkedListMauricio()
     {
         size = 0;
         first = null;   
