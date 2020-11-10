@@ -1,52 +1,55 @@
+package CodigoLinea;
 
 import java.util.ArrayList;
-/**
- * Esta clase es una implementación de un digrafo usando matrices de adyacencia
- * 
- * @author Mauricio Toro 
- * @version 1
- */
-import java.util.ArrayList;
-public class DigraphAM extends Graph
-{
-    //matriz que contiene los arcos entre los vertics
-    private int [][] grafoAM;
-    
-    /**
-     * Constructor de DiagraphAM
-     */
-    public DigraphAM(int vertices) {
-        super(vertices);
-        this.size = vertices;
-        grafoAM = new int[vertices+1][vertices+1];
+import java.util.Arrays;
+
+
+public class DigraphAM extends Graph {
+
+    //Grafo con matriz
+    private int[][] mat;
+
+    public DigraphAM(int size){
+        super(size);
+        mat = new int[size+1][size+1];
+
+        for (int i = 1; i <= size; ++i) {
+            mat[i][0] = i;
+            mat[0][i] = i;
+        }
+
+    }
+    void imprimir() {
+        for (int[] ints : mat) {
+            for (int anInt : ints) {
+                System.out.print(anInt + " ");
+            }
+            System.out.println();
+        }
     }
 
-    /**
-     * Metodo que agrega un arco entre dos vertices
-     */
-    public void addArc(int source, int destination, int weight)
-    {
-        grafoAM[source][destination] = weight;
+    public void addArc(int source, int destination, int weight){
+        if (!(source == 0 && destination == 0)) {
+            mat[source][destination] = weight;
+        }
     }
 
-    /**
-     * Metodo que retorna el un ArrayList con el numero de todos los vertices que tengan una conexion
-     * con uno
-     */
-    public ArrayList<Integer> getSuccessors(int vertice)
-    {
-        ArrayList<Integer> respuesta = new ArrayList<>();
-        for (int i = 0; i < size; i++)
-            if (grafoAM[vertice][i] != 0)
-                respuesta.add(i);
-        return respuesta;
+
+    public int getWeight(int source, int destination){
+        return mat[source][destination];
     }
 
-    /**
-     * Metodo que retorna el valor o peso de un arco entre dos vertices
-     */
-    public int getWeight(int source, int destination)
+    public ArrayList<Integer> getSuccessors(int vertex)
     {
-        return grafoAM[source][destination];
+        ArrayList<Integer> np= new ArrayList<>();
+        for (int i = 1; i < mat.length; i++) {
+            if (mat[vertex][i] != 0) {
+                np.add(i);
+            }
+        }
+        return np;
+    }
+    public int getFirst() {
+        return mat[1][0];
     }
 }
